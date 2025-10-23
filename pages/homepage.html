@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل فعاليات المدينة - اكتشف الثقافة السورية</title>
+    <meta name="description" content="منصة سوريا الرائدة لاكتشاف الفعاليات الثقافية والاجتماعية. اكتشف الأحداث المحلية، تواصل مع مجتمعك، واحتفل بالتراث السوري.">
+
+
+
+    <link rel="icon" href="/public/favicon.ico">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+    <meta name="theme-color" content="#C17B47">
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
+    <!-- homepage CSS moved to ../css/main.css (carousel and highlight tweaks) -->
+
+</head>
+
+
+
+  
+<body class="bg-background font-body">
+    <!-- Navigation Header (unified Bootstrap navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top no-print">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                <img class="me-3 rounded-circle" src="../public/logo.png" alt="شعار دليل فعاليات المدينة" width="40" height="40" style="object-fit:cover;display:block;" loading="lazy" decoding="async">
+                <div>
+                    <h1 class="mb-0 fs-5 fw-bold" style="color: var(--primary-color)">دليل فعاليات المدينة</h1>
+                    <p class="mb-0 small text-secondary">City Events Directory</p>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events_listing.html">الفعاليات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">تواصل معنا</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="bg-light py-3 no-print">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <i class="fas fa-home" style="color: var(--primary-color); margin-inline-end: 0.6rem; font-size: 1rem;" aria-hidden="true"></i>
+                <li class="breadcrumb-item"><a href="homepage.html" class="text-decoration-none">الرئيسية</a></li>
+            </ol>
+        </div>
+    </nav>
+
+
+    <!-- Hero Section with Carousel -->
+    <section class="relative bg-gradient-to-br from-primary-50 to-accent-50 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+                        <div id="featuredCarousel" class="relative overflow-hidden rounded-xl">
+                            <div id="featuredCarouselSlides" class="position-relative"></div>
+                        </div>
+
+                        <!-- Carousel Navigation -->
+                        <div id="featuredCarouselDots" class="d-flex justify-content-center mt-4 gap-2" role="tablist" aria-label="Carousel navigation"></div>
+
+                        <script src="../public/events-data.js"></script>
+                        <script>
+                            (function(){
+                                const slidesContainer = document.getElementById('featuredCarouselSlides');
+                                const dotsContainer = document.getElementById('featuredCarouselDots');
+                                const events = window.eventsData || [];
+                                let featured = events.filter(e => e.featured);
+                                if(featured.length < 3) featured = events.slice(0,3);
+                                featured = featured.slice(0,3);
+
+                                function formatDateShort(dateString){
+                                    try{ const d = new Date(dateString); return d.toLocaleDateString('ar-SY',{day:'numeric',month:'short',year:'numeric'}); }catch(e){return dateString}
+                                }
+
+                                slidesContainer.innerHTML = featured.map((ev, i) => {
+                                    const img = (ev.gallery && ev.gallery.length) ? ev.gallery[0] : (ev.image || '');
+                                    return `
+                                        <div class="carousel-item ${i===0? 'active':''}">
+                                            <div class="relative">
+                                                <img src="${img}" alt="${ev.title}" class="homepage-hero-img" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop'">
+                                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                                                <div class="absolute bottom-4 end-4 start-4 text-white text-end">
+                                                    <h4 class="text-xl font-headlines font-bold mb-2">${ev.title}</h4>
+                                                    <p class="text-sm opacity-90">${formatDateShort(ev.date)} • ${ev.cityName || ''}</p>
+                                                    <div class="d-flex justify-content-end align-items-center mt-2 gap-2">
+                                                        <span class="badge bg-accent text-accent-900">${ev.category || ''}</span>
+                                                        <span class="text-xs"><i class="fas fa-users ms-1"></i> ${ev.attendees? ev.attendees + '+' : ''}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('');
+
+                                dotsContainer.innerHTML = featured.map((_,i) => `<button class="carousel-dot ${i===0? 'active bg-primary': 'bg-primary-200'} rounded-circle" data-slide="${i}" aria-label="عرض الفعالية ${i+1}" style="width:10px;height:10px;border:none"></button>`).join('');
+                            })();
+                        </script>
+        </div>
+    </section>
+
+    <!-- Quick Category Filters -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-headlines font-bold text-text-primary mb-4">استكشف حسب الفئة</h2>
+                <p class="text-lg text-text-secondary">اختر نوع الفعالية التي تهمك واكتشف عالماً من الأنشطة الثقافية</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Culture Category -->
+                <a href="events_listing.html?category=culture" class="group bg-gradient-to-br from-primary-50 to-primary-100 rounded-xl p-6 text-center hover:shadow-warm-lg cultural-transition">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 cultural-transition">
+                        <i class="fas fa-theater-masks text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-headlines font-bold text-text-primary mb-2">ثقافة</h3>
+                    <p class="text-sm text-text-secondary">مسرح، أدب، فنون</p>
+                    <span class="inline-block mt-2 text-xs bg-primary text-white px-3 py-1 rounded-full">15 فعالية</span>
+                </a>
+
+                <!-- Sports Category -->
+                <a href="events_listing.html?category=sports" class="group bg-gradient-to-br from-accent-50 to-accent-100 rounded-xl p-6 text-center hover:shadow-warm-lg cultural-transition">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 cultural-transition">
+                        <i class="fas fa-futbol text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-headlines font-bold text-text-primary mb-2">رياضة</h3>
+                    <p class="text-sm text-text-secondary">كرة قدم، سباحة، جري</p>
+                    <span class="inline-block mt-2 text-xs bg-accent text-accent-900 px-3 py-1 rounded-full">8 فعاليات</span>
+                </a>
+
+                <!-- Music Category -->
+                <a href="events_listing.html?category=music" class="group bg-gradient-to-br from-secondary-50 to-secondary-100 rounded-xl p-6 text-center hover:shadow-warm-lg cultural-transition">
+                    <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 cultural-transition">
+                        <i class="fas fa-music text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-headlines font-bold text-text-primary mb-2">موسيقى</h3>
+                    <p class="text-sm text-text-secondary">حفلات، أمسيات، عروض</p>
+                    <span class="inline-block mt-2 text-xs bg-secondary text-white px-3 py-1 rounded-full">12 فعالية</span>
+                </a>
+
+                <!-- Family Category -->
+                <a href="events_listing.html?category=family" class="group bg-gradient-to-br from-success/10 to-success/20 rounded-xl p-6 text-center hover:shadow-warm-lg cultural-transition">
+                    <div class="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 cultural-transition">
+                        <i class="fas fa-users text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-headlines font-bold text-text-primary mb-2">عائلية</h3>
+                    <p class="text-sm text-text-secondary">أطفال، عائلات، ترفيه</p>
+                    <span class="inline-block mt-2 text-xs bg-success text-white px-3 py-1 rounded-full">10 فعاليات</span>
+                </a>
+
+                <!-- Business Category -->
+                <a href="events_listing.html?category=business" class="group bg-gradient-to-br from-warning/10 to-warning/20 rounded-xl p-6 text-center hover:shadow-warm-lg cultural-transition">
+                    <div class="w-16 h-16 bg-warning rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 cultural-transition">
+                        <i class="fas fa-briefcase text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-headlines font-bold text-text-primary mb-2">أعمال</h3>
+                    <p class="text-sm text-text-secondary">مؤتمرات، ورش، شبكات</p>
+                    <span class="inline-block mt-2 text-xs bg-warning text-white px-3 py-1 rounded-full">6 فعاليات</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- This Week's Highlights -->
+    <section class="py-16 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-headlines font-bold text-text-primary mb-4">أبرز فعاليات هذا الأسبوع</h2>
+                <p class="text-lg text-text-secondary">لا تفوت هذه الفرص الرائعة للمشاركة في الأنشطة الثقافية المميزة</p>
+            </div>
+
+            <div id="highlightsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Hero-style highlight cards will be injected here -->
+            </div>
+            <script>
+                (function(){
+                    const container = document.getElementById('highlightsGrid');
+                    const events = window.eventsData || [];
+                    let highlights = events.filter(e => e.featured);
+                    if(highlights.length < 3) highlights = events.slice(0,3);
+                    highlights = highlights.slice(0,3);
+
+                    function formatDateShort(dateString){
+                        try{ const d = new Date(dateString); return d.toLocaleDateString('ar-SY',{day:'numeric',month:'short',year:'numeric'}); }catch(e){return dateString}
+                    }
+
+                    container.innerHTML = highlights.map(ev => {
+                        const img = (ev.gallery && ev.gallery.length) ? ev.gallery[0] : (ev.image || '');
+                        return `
+                            <div>
+                                <div class="bg-white rounded-xl shadow-warm hover:shadow-warm-lg overflow-hidden">
+                                    <div class="relative">
+                                        <img src="${img}" alt="${ev.title}" class="homepage-highlight-img" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop'">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
+                                        <div class="absolute bottom-4 end-4 start-4 text-white text-end">
+                                            <h4 class="text-xl font-headlines font-bold mb-2">${ev.title}</h4>
+                                            <p class="text-sm opacity-90">${formatDateShort(ev.date)} • ${ev.cityName || ''}</p>
+                                            <div class="d-flex justify-content-end align-items-center mt-2 gap-2">
+                                                <span class="badge bg-accent text-accent-900">${ev.category || ''}</span>
+                                                <span class="text-xs"><i class="fas fa-users ms-1"></i> ${ev.attendees? ev.attendees + '+' : ''}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-4 text-center">
+                                        <a href="event_details.html?id=${ev.id}" class="bg-primary text-white px-4 py-2 rounded-lg font-cta font-medium hover:bg-primary-600 cultural-transition">عرض التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                })();
+            </script>
+
+            <div class="text-center mt-12">
+                <a href="events_listing.html" class="bg-accent text-accent-900 px-8 py-3 rounded-lg font-cta font-semibold hover:bg-accent-600 hover:text-white cultural-transition shadow-warm">
+                    عرض جميع الفعاليات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Spotlight -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-headlines font-bold text-text-primary mb-4">المدن السورية المميزة</h2>
+                <p class="text-lg text-text-secondary">اكتشف الفعاليات في أجمل المدن السورية وتراثها العريق</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Damascus -->
+                <div class="group relative overflow-hidden rounded-xl shadow-warm hover:shadow-warm-lg cultural-transition">
+                <img src="https://images.unsplash.com/photo-1645740262380-d86b597b90c4?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RGFtYXNjdXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=500" 
+                         alt="دمشق - العاصمة السورية التاريخية مع معالمها الأثرية والثقافية المميزة" 
+                         class="w-full h-64 object-cover group-hover:scale-110 cultural-transition"
+                         loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-4 right-4 left-4 text-white">
+                        <h3 class="text-xl font-headlines font-bold mb-2">دمشق</h3>
+                        <p class="text-sm opacity-90 mb-3">عاصمة الثقافة والتاريخ</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs bg-primary px-2 py-1 rounded-full">18 فعالية نشطة</span>
+                            <a href="events_listing.html?city=damascus" class="text-xs hover:underline">استكشف المزيد ←</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aleppo -->
+                <div class="group relative overflow-hidden rounded-xl shadow-warm hover:shadow-warm-lg cultural-transition">
+                <img src="https://images.unsplash.com/photo-1731341990951-72d66c0ad911" 
+                         alt="حلب - المدينة التاريخية المعروفة بقلعتها الشهيرة وأسواقها التراثية" 
+                         class="w-full h-64 object-cover group-hover:scale-110 cultural-transition"
+                         loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-4 right-4 left-4 text-white">
+                        <h3 class="text-xl font-headlines font-bold mb-2">حلب</h3>
+                        <p class="text-sm opacity-90 mb-3">مدينة التجارة والفنون</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs bg-secondary px-2 py-1 rounded-full">12 فعالية نشطة</span>
+                            <a href="events_listing.html?city=aleppo" class="text-xs hover:underline">استكشف المزيد ←</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Homs -->
+                <div class="group relative overflow-hidden rounded-xl shadow-warm hover:shadow-warm-lg cultural-transition">
+                <img src="https://images.unsplash.com/photo-1561896353-8e5ab11d1db0" 
+                         alt="حمص - مدينة الحضارة والتراث مع معالمها التاريخية المتنوعة" 
+                         class="w-full h-64 object-cover group-hover:scale-110 cultural-transition"
+                         loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-4 right-4 left-4 text-white">
+                        <h3 class="text-xl font-headlines font-bold mb-2">حمص</h3>
+                        <p class="text-sm opacity-90 mb-3">مدينة الحضارة والتراث</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs bg-accent text-accent-900 px-2 py-1 rounded-full">8 فعاليات نشطة</span>
+                            <a href="events_listing.html?city=homs" class="text-xs hover:underline">استكشف المزيد ←</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lattakia -->
+                <div class="group relative overflow-hidden rounded-xl shadow-warm hover:shadow-warm-lg cultural-transition">
+                <img src="https://images.unsplash.com/photo-1691386001430-412c4619ea9d" 
+                         alt="اللاذقية - المدينة الساحلية الجميلة مع شواطئها ومعالمها السياحية" 
+                         class="w-full h-64 object-cover group-hover:scale-110 cultural-transition"
+                         loading="lazy"
+                         onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <div class="absolute bottom-4 right-4 left-4 text-white">
+                        <h3 class="text-xl font-headlines font-bold mb-2">اللاذقية</h3>
+                        <p class="text-sm opacity-90 mb-3">عروس الساحل السوري</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs bg-success px-2 py-1 rounded-full">10 فعاليات نشطة</span>
+                            <a href="events_listing.html?city=lattakia" class="text-xs hover:underline">استكشف المزيد ←</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Testimonials -->
+    <section class="py-16 bg-gradient-to-br from-primary-50 to-accent-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl lg:text-4xl font-headlines font-bold text-text-primary mb-4">آراء المجتمع</h2>
+                <p class="text-lg text-text-secondary">اكتشف كيف غيرت منصتنا تجربة اكتشاف الفعاليات لآلاف المستخدمين</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1707415193278-5b18cb819ba2" 
+                             alt="أحمد محمد - مستخدم من دمشق يشارك تجربته الإيجابية مع المنصة" 
+                             class="w-12 h-12 rounded-full object-cover ml-4"
+                             loading="lazy"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <div>
+                            <h4 class="font-headlines font-bold text-text-primary">أحمد محمد</h4>
+                            <p class="text-sm text-text-secondary">دمشق</p>
+                        </div>
+                    </div>
+                    <div class="flex text-accent mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-text-secondary leading-relaxed">
+                        "منصة رائعة ساعدتني في اكتشاف فعاليات ثقافية مذهلة في دمشق. التصميم سهل الاستخدام والمعلومات دقيقة ومحدثة."
+                    </p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1707415193278-5b18cb819ba2" 
+                             alt="سارة أحمد - مستخدمة من حلب تعبر عن رضاها عن خدمات المنصة" 
+                             class="w-12 h-12 rounded-full object-cover ml-4"
+                             loading="lazy"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <div>
+                            <h4 class="font-headlines font-bold text-text-primary">سارة أحمد</h4>
+                            <p class="text-sm text-text-secondary">حلب</p>
+                        </div>
+                    </div>
+                    <div class="flex text-accent mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-text-secondary leading-relaxed">
+                        "بفضل هذه المنصة، لم أعد أفوت أي فعالية مهمة في حلب. التنظيم ممتاز والتصنيفات تساعد في العثور على ما أبحث عنه بسرعة."
+                    </p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1728296156183-e1c4735b5cb3?auto=format&fit=crop&w=200&q=80" 
+                             alt="محمد علي - مستخدم من حمص يقدر جودة المحتوى والتنظيم" 
+                             class="w-12 h-12 rounded-full object-cover ml-4"
+                             loading="lazy"
+                             onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;">
+                        <div>
+                            <h4 class="font-headlines font-bold text-text-primary">محمد علي</h4>
+                            <p class="text-sm text-text-secondary">حمص</p>
+                        </div>
+                    </div>
+                    <div class="flex text-accent mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-text-secondary leading-relaxed">
+                        "تجربة استخدام ممتازة! المنصة تربطني بالمجتمع المحلي وتساعدني في اكتشاف فعاليات جديدة ومثيرة كل أسبوع."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Community Stats -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="text-3xl font-headlines font-bold text-primary mb-2">2,500+</div>
+                    <p class="text-text-secondary">مستخدم نشط</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="text-3xl font-headlines font-bold text-secondary mb-2">150+</div>
+                    <p class="text-text-secondary">فعالية شهرياً</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="text-3xl font-headlines font-bold text-accent mb-2">12</div>
+                    <p class="text-text-secondary">مدينة سورية</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-warm p-6">
+                    <div class="text-3xl font-headlines font-bold text-success mb-2">98%</div>
+                    <p class="text-text-secondary">رضا المستخدمين</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-br from-primary-50 to-accent-50 rounded-2xl p-8 lg:p-12">
+                <h2 class="text-3xl lg:text-4xl font-headlines font-bold text-text-primary mb-4">
+                    ابق على اطلاع دائم
+                </h2>
+                <p class="text-lg text-text-secondary mb-8">
+                    اشترك في نشرتنا الإخبارية لتصلك أحدث الفعاليات والأنشطة الثقافية في مدينتك
+                </p>
+
+                <form class="max-w-md mx-auto" id="newsletterForm">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input type="email" 
+                               placeholder="أدخل بريدك الإلكتروني" 
+                               class="flex-1 px-4 py-3 rounded-lg border border-primary-200 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                               required
+                               id="emailInput">
+                        <button type="submit" 
+                                class="bg-primary text-white px-8 py-3 rounded-lg font-cta font-semibold hover:bg-primary-600 cultural-transition shadow-warm">
+                            اشتراك
+                        </button>
+                    </div>
+                    <p class="text-sm text-text-secondary mt-4">
+                        نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.
+                    </p>
+                </form>
+
+                <!-- Social Media Links -->
+                <div class="mt-8">
+                    <p class="text-text-secondary mb-4">تابعنا على وسائل التواصل الاجتماعي</p>
+                    <div class="flex justify-center space-x-reverse space-x-4">
+                        <a href="javascript:void(0)" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-600 cultural-transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-600 cultural-transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-600 cultural-transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-600 cultural-transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4 footer-company">
+                        <img class="footer-logo" src="../public/logo.png" alt="شعار دليل فعاليات المدينة">
+                        <h3 class="text-xl font-headlines font-bold">دليل فعاليات المدينة</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        منصة سوريا الرائدة لاكتشاف الفعاليات الثقافية والاجتماعية. نربط المجتمعات ونحتفل بالتراث السوري.
+                    </p>
+                    <div class="flex space-x-reverse space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-primary cultural-transition">الرئيسية</a></li>
+                        <li><a href="events_listing.html" class="text-gray-300 hover:text-primary cultural-transition">الفعاليات</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary cultural-transition">من نحن</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary cultural-transition">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">الفئات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="events_listing.html?category=culture" class="text-gray-300 hover:text-primary cultural-transition">ثقافة</a></li>
+                        <li><a href="events_listing.html?category=music" class="text-gray-300 hover:text-primary cultural-transition">موسيقى</a></li>
+                        <li><a href="events_listing.html?category=sports" class="text-gray-300 hover:text-primary cultural-transition">رياضة</a></li>
+                        <li><a href="events_listing.html?category=family" class="text-gray-300 hover:text-primary cultural-transition">عائلية</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">معلومات التواصل</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-envelope ml-2"></i> info@cityevents.sy</p>
+                        <p><i class="fas fa-phone ml-2"></i>11 123 4567 963+</p>
+                        <p><i class="fas fa-map-marker-alt ml-2"></i> دمشق، سوريا</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0 text-light opacity-75">© 2025 دليل فعاليات المدينة. جميع الحقوق محفوظة.</p>
+                <div class="footer-credits"><a href="about.html#team-zeinab_274841">زينب احمد</a> (<code>zeinab_274841</code>), <a href="about.html#team-raghad_233139">رغد منيف العصغور</a> (<code>raghad_233139</code>), <a href="about.html#team-bader_aldeen_210144">بدر الدين عرنوس</a> (<code>bader_aldeen_210144</code>), <a href="about.html#team-ali_222768">علي بدر سليمان</a> (<code>ali_222768</code>), <a href="about.html#team-aya_248940">آية محمد نبيل الحناوي</a> (<code>aya_248940</code>)</div>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        // Carousel functionality (initialized after DOMContentLoaded to account for dynamic slides/dots)
+        let currentSlide = 0;
+        let slides = [];
+        let dots = [];
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+                dot.classList.toggle('bg-primary', i === index);
+                dot.classList.toggle('bg-primary-200', i !== index);
+            });
+        }
+
+        function nextSlide() {
+            if (!slides.length) return;
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('emailInput').value;
+            if (email) {
+                alert('شكراً لك! تم تسجيل اشتراكك بنجاح.');
+                document.getElementById('emailInput').value = '';
+            }
+        });
+
+        // Language toggle removed
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation for images
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('load', function() {
+                this.style.opacity = '1';
+            });
+        });
+
+        // Initialize carousel styles
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .carousel-item {
+                    display: none;
+                }
+                .carousel-item.active {
+                    display: block;
+                }
+                img {
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Show first slide
+            showSlide(0);
+        });
+
+        // Initialize dynamic carousel after DOMContentLoaded (slides/dots injected earlier)
+        document.addEventListener('DOMContentLoaded', function(){
+            slides = Array.from(document.querySelectorAll('.carousel-item'));
+            dots = Array.from(document.querySelectorAll('.carousel-dot'));
+
+            // show first slide safely
+            if(slides.length) showSlide(0);
+
+            // Auto-advance carousel
+            setInterval(nextSlide, 5000);
+
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                });
+            });
+        });
+    </script>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn no-print" id="scrollTopBtn" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle (required for navbar collapse) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        class ScrollTopButton {
+            constructor() {
+                this.scrollTopBtn = document.getElementById('scrollTopBtn');
+                if (!this.scrollTopBtn) return;
+                this.init();
+            }
+
+            init() {
+                window.addEventListener('scroll', () => this.toggleButton());
+                this.scrollTopBtn.addEventListener('click', () => this.scrollToTop());
+            }
+
+            toggleButton() {
+                if (window.pageYOffset > 300) {
+                    this.scrollTopBtn.classList.add('show');
+                } else {
+                    this.scrollTopBtn.classList.remove('show');
+                }
+            }
+
+            scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            new ScrollTopButton();
+        });
+    </script>

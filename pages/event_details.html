@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهرجان دمشق الثقافي - تفاصيل الفعالية | دليل فعاليات المدينة</title>
+    <meta name="description" content="انضم إلى مهرجان دمشق الثقافي - فعالية ثقافية مميزة تحتفل بالتراث السوري. عروض تراثية، موسيقى شعبية، وأنشطة عائلية في قلب دمشق القديمة.">
+
+    <link rel="icon" href="/public/favicon.ico">
+    <link rel="shortcut icon" href="/public/favicon.ico">
+    <meta name="theme-color" content="#C17B47">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/main.css">
+
+  </head>
+
+
+
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top no-print">
+        <div class="container-fluid">
+            <!-- Logo -->
+                <a class="navbar-brand d-flex align-items-center" href="homepage.html">
+                <img class="me-3 rounded-circle" src="../public/logo.png" alt="شعار دليل فعاليات المدينة" width="40" height="40" style="object-fit:cover;display:block;" loading="lazy" decoding="async">
+                <div>
+                    <h1 class="mb-0 fs-5 fw-bold" style="color: var(--primary-color)">دليل فعاليات المدينة</h1>
+                    <p class="mb-0 small text-secondary">City Events Directory</p>
+                </div>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="homepage.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events_listing.html">الفعاليات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">تواصل معنا</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="breadcrumb" class="bg-light py-3 no-print">
+        <div class="container">
+            <ol class="breadcrumb mb-0">
+                <i class="fas fa-home" style="color: var(--primary-color); margin-inline-end: 0.6rem; font-size: 1rem;" aria-hidden="true"></i>
+                <li class="breadcrumb-item"></li>
+                <li class="breadcrumb-item">
+                    <a href="homepage.html" class="text-decoration-none">الرئيسية</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="events_listing.html" class="text-decoration-none">الفعاليات</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">مهرجان دمشق الثقافي</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Event Hero Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-start gap-4 gap-lg-5">
+    <!-- Event Image Gallery -->
+    <div class="flex-fill">
+        <!-- Main Image -->
+        <div class="position-relative overflow-hidden rounded-3 shadow-lg mb-4">
+            <img id="mainEventImage" src="" alt="" class="img-fluid w-100" style="height: 400px; object-fit: cover;">
+
+            <!-- Status Badge -->
+            <div id="statusBadge" class="position-absolute top-0 end-0 m-3"></div>
+
+            <!-- Capacity -->
+            <div id="capacityBadge" class="position-absolute bottom-0 end-0 m-3"></div>
+        </div>
+
+        <!-- Thumbnail Gallery -->
+        <div id="thumbnailGallery" class="row g-3"></div>
+    </div>
+
+    <!-- Event Information -->
+    <div class="flex-fill">
+        <!-- Event Header -->
+        <div class="mb-4">
+            <div class="d-flex gap-2 mb-3">
+                <span class="badge bg-primary">ثقافة</span>
+                <span class="badge bg-warning text-dark">مجاني</span>
+                <span class="badge bg-danger"><i class="fas fa-fire me-1"></i>شائع</span>
+            </div>
+
+            <h1 class="display-5 fw-bold mb-4">
+                مهرجان دمشق الثقافي
+            </h1>
+
+            <p class="lead mb-4">
+                احتفال بالتراث السوري الأصيل مع عروض تراثية مميزة، موسيقى شعبية، وأنشطة عائلية في أجواء تراثية ساحرة في قلب دمشق القديمة.
+            </p>
+
+            <!-- Rating -->
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="text-warning fs-5">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="fw-bold">4.9</span>
+                <span class="text-muted">•</span>
+                <span class="text-muted">127 تقييم</span>
+                <span class="text-muted">•</span>
+                <span class="text-muted">2,340 مشاهدة</span>
+            </div>
+        </div>
+
+        <!-- Event Details Card -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-calendar-alt text-primary fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">التاريخ والوقت</h6>
+                                <p class="mb-0 text-muted">الجمعة، 25 أكتوبر 2025 • 6:00 مساءً - 10:00 مساءً</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-map-marker-alt text-primary fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">الموقع</h6>
+                                <p class="mb-0 text-muted">ساحة دمشق القديمة، الباب الشرقي، دمشق</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-users text-primary fs-4 me-3 mt-1"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">المشاركون</h6>
+                                <p class="mb-0 text-muted">450 مشارك مسجل • 50 مقعد متبقي</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-grid gap-2 d-md-flex mb-4">
+            <button id="bookEventBtn" class="btn btn-primary btn-lg flex-fill">
+                <i class="fas fa-ticket-alt me-2"></i>
+                <span>احجز مقعدك مجاناً</span>
+            </button>
+            <button id="addToCalendarBtn" class="btn btn-outline-primary btn-lg flex-fill">
+                <i class="fas fa-calendar-plus me-2"></i>
+                <span>أضف للتقويم</span>
+            </button>
+        </div>
+
+        <!-- Social Sharing -->
+        <div class="d-flex justify-content-between align-items-center pt-3 border-top">
+            <div class="d-flex gap-3">
+                <button id="shareBtn" class="btn btn-link text-muted p-0">
+                    <i class="fas fa-share-alt me-1"></i>
+                    <span>مشاركة</span>
+                </button>
+                <button id="bookmarkBtn" class="btn btn-link text-muted p-0">
+                    <i class="far fa-bookmark me-1"></i>
+                    <span>حفظ</span>
+                </button>
+                <button class="btn btn-link text-muted p-0 no-print" onclick="window.print()">
+                    <i class="fas fa-print me-1"></i>
+                    <span>طباعة</span>
+                </button>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary btn-sm rounded-pill" title="Share on Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button class="btn btn-info btn-sm rounded-pill" title="Share on Twitter">
+                    <i class="fab fa-twitter"></i>
+                </button>
+                <button class="btn btn-success btn-sm rounded-pill" title="Share on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <!-- Event Description -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h2 class="h3 fw-bold mb-4">وصف الفعالية</h2>
+                            <div id="eventDescription" class="fs-6 lh-lg">
+                                <!-- Description will be injected here from events-data.js -->
+                                <p class="text-muted">يتم تحميل وصف الفعالية...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Program -->
+                    <div class="card mb-4 mb-md-0">
+                        <div class="card-body" id="programCard">
+                            <h2 class="h3 fw-bold mb-4">برنامج الفعالية</h2>
+                            <div id="programList" class="row g-3">
+                                <!-- Program items will be injected here based on event.program -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Organizer Info -->
+                    <div class="card mb-4">
+                        <div class="card-body" id="organizerCard">
+                            <h5 class="fw-bold mb-3">منظم الفعالية</h5>
+                            <div class="d-flex align-items-center mb-3">
+                                <img id="organizerLogo" src="https://images.unsplash.com/photo-1707546854112-fb0e61d36273" 
+                                     class="rounded-circle me-3" width="60" height="60" style="object-fit: cover;">
+                                <div>
+                                    <h6 id="organizerName" class="fw-bold mb-1">مؤسسة التراث السوري</h6>
+                                    <small id="organizerRole" class="text-muted">منظمة ثقافية معتمدة</small>
+                                </div>
+                            </div>
+                            <p id="organizerDescription" class="small text-muted mb-3">
+                                مؤسسة متخصصة في الحفاظ على التراث السوري وتنظيم الفعاليات الثقافية منذ 2010.
+                            </p>
+                            <div id="organizerMeta" class="small mb-3">
+                                <div class="d-flex align-items-center mb-1">
+                                    <i class="fas fa-star text-warning me-2"></i>
+                                    <span id="organizerRating">4.8 تقييم (245 فعالية)</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-1">
+                                    <i class="fas fa-users text-primary me-2"></i>
+                                    <span id="organizerFollowers">50,000+ مشارك سابق</span>
+                                </div>
+                            </div>
+                            <button id="organizerMoreBtn" class="btn btn-outline-primary btn-sm w-100">
+                                عرض المزيد من الفعاليات
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Event Stats -->
+                    <div class="card">
+                        <div class="card-body" id="statsCard">
+                            <h5 class="fw-bold mb-3">إحصائيات الفعالية</h5>
+                            <div id="statsGrid" class="row g-3 text-center">
+                                <!-- Stats will be injected here: views, attendees, interested, shares -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-text-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center mb-4 footer-company">
+                        <img class="footer-logo" src="../public/logo.png" alt="شعار دليل فعاليات المدينة">
+                        <h3 class="text-xl font-headlines font-bold">دليل فعاليات المدينة</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        منصة سوريا الرائدة لاكتشاف الفعاليات الثقافية والاجتماعية. نربط المجتمعات ونحتفل بالتراث السوري.
+                    </p>
+                    <div class="flex space-x-reverse space-x-4">
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-gray-300 hover:text-primary cultural-transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">روابط سريعة</h4>
+                    <ul class="space-y-2">
+                        <li><a href="homepage.html" class="text-gray-300 hover:text-primary cultural-transition">الرئيسية</a></li>
+                        <li><a href="events_listing.html" class="text-gray-300 hover:text-primary cultural-transition">الفعاليات</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-primary cultural-transition">من نحن</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-primary cultural-transition">تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">الفئات</h4>
+                    <ul class="space-y-2">
+                        <li><a href="events_listing.html?category=culture" class="text-gray-300 hover:text-primary cultural-transition">ثقافة</a></li>
+                        <li><a href="events_listing.html?category=music" class="text-gray-300 hover:text-primary cultural-transition">موسيقى</a></li>
+                        <li><a href="events_listing.html?category=sports" class="text-gray-300 hover:text-primary cultural-transition">رياضة</a></li>
+                        <li><a href="events_listing.html?category=family" class="text-gray-300 hover:text-primary cultural-transition">عائلية</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-headlines font-bold mb-4">معلومات التواصل</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p><i class="fas fa-envelope ml-2"></i> info@cityevents.sy</p>
+                        <p><i class="fas fa-phone ml-2"></i>11 123 4567 963+</p>
+                        <p><i class="fas fa-map-marker-alt ml-2"></i> دمشق، سوريا</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0 text-light opacity-75">© 2025 دليل فعاليات المدينة. جميع الحقوق محفوظة.</p>
+                <div class="footer-credits"><a href="about.html#team-zeinab_274841">زينب احمد</a> (<code>zeinab_274841</code>), <a href="about.html#team-raghad_233139">رغد منيف العصغور</a> (<code>raghad_233139</code>), <a href="about.html#team-bader_aldeen_210144">بدر الدين عرنوس</a> (<code>bader_aldeen_210144</code>), <a href="about.html#team-ali_222768">علي بدر سليمان</a> (<code>ali_222768</code>), <a href="about.html#team-aya_248940">آية محمد نبيل الحناوي</a> (<code>aya_248940</code>)</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn no-print" id="scrollTopBtn" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../public/events-data.js"></script>
+    <script>
+        // Dynamic event renderer: reads ?id= and populates the page (runs before DOMContentLoaded)
+        (function(){
+            function getQueryParam(name){
+                return new URLSearchParams(window.location.search).get(name);
+            }
+            function formatDate(dateString){
+                try{
+                    const d = new Date(dateString);
+                    return d.toLocaleDateString('ar-SY',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
+                }catch(e){return dateString}
+            }
+
+            const id = parseInt(getQueryParam('id'),10) || null;
+            const events = window.eventsData || [];
+            const ev = events.find(e => e.id === id) || events[0] || null;
+            if(!ev) return;
+
+            // Update document title and breadcrumb/hero
+            const titleEl = document.querySelector('title');
+            if(titleEl) titleEl.textContent = `${ev.title} - تفاصيل الفعالية | دليل فعاليات المدينة`;
+            const bcActive = document.querySelector('.breadcrumb-item.active');
+            if(bcActive) bcActive.textContent = ev.title;
+            const heroTitle = document.querySelector('.display-5');
+            if(heroTitle) heroTitle.textContent = ev.title;
+            const heroLead = document.querySelector('.lead');
+            if(heroLead) heroLead.textContent = ev.description;
+
+            // Main image, badges
+            const mainImage = document.getElementById('mainEventImage');
+            if(mainImage){
+                const mainSrc = (ev.gallery && ev.gallery.length) ? ev.gallery[0] : (ev.image || '');
+                mainImage.src = mainSrc;
+                mainImage.alt = ev.title + ' - ' + ev.description;
+                // fallback on error
+                mainImage.onerror = function(){
+                    this.onerror = null;
+                    this.src = '../public/fallback-event.jpg';
+                };
+            }
+
+            const statusBadge = document.getElementById('statusBadge');
+            if(statusBadge){
+                const statusText = ev.status === 'available' ? 'متاح للحجز' : (ev.status === 'limited' ? 'مقاعد محدودة' : 'مكتمل');
+                const statusClass = ev.status === 'available' ? 'bg-success' : (ev.status === 'limited' ? 'bg-warning text-dark' : 'bg-secondary');
+                statusBadge.innerHTML = `<span class="badge ${statusClass} fs-6 px-3 py-2"><i class="fas fa-check-circle me-1"></i><span>${statusText}</span></span>`;
+            }
+
+            const capacityBadge = document.getElementById('capacityBadge');
+            if(capacityBadge){
+                capacityBadge.innerHTML = `<span class="badge bg-dark bg-opacity-75 fs-6"><i class="fas fa-users me-1"></i>${ev.attendees} مشارك</span>`;
+            }
+
+            // Thumbnail gallery
+            const galleryContainer = document.getElementById('thumbnailGallery');
+            if(galleryContainer){
+                const imgs = (ev.gallery && ev.gallery.length) ? ev.gallery : (ev.image ? [ev.image] : []);
+                galleryContainer.innerHTML = imgs.map((src, i) => `
+                    <div class="col-3">
+                        <button class="gallery-thumb border-0 w-100 overflow-hidden rounded-2 shadow-sm ${i===0? 'active' : ''}" data-image="${src}">
+                            <img src="${src}" class="img-fluid" style="height: 80px; object-fit: cover;" onerror="this.onerror=null;this.src='../public/fallback-event-thumb.jpg'">
+                        </button>
+                    </div>
+                `).join('');
+
+                // Reinitialize gallery handlers after injecting thumbs
+                setTimeout(() => {
+                    try{
+                        // Re-query thumbs and reattach click handlers
+                        const thumbs = document.querySelectorAll('.gallery-thumb');
+                        const main = document.getElementById('mainEventImage');
+                        thumbs.forEach((thumb) => {
+                            thumb.onclick = function(){
+                                const src = this.dataset.image;
+                                if(main) main.src = src;
+                                thumbs.forEach(t => t.classList.remove('active'));
+                                this.classList.add('active');
+                            };
+                            // ensure thumb images have fallback (already set via onerror attribute)
+                        });
+                    }catch(e){console.warn('Gallery init failed', e)}
+                }, 50);
+            }
+
+            // Update details (date, location, participants)
+            const detailsRow = document.querySelector('.card.mb-4 .card-body .row');
+            if(detailsRow){
+                const cols = detailsRow.querySelectorAll('.col-12');
+                if(cols[0]) cols[0].innerHTML = `<div class="d-flex align-items-start"><i class="fas fa-calendar-alt text-primary fs-4 me-3 mt-1"></i><div><h6 class="fw-bold mb-1">التاريخ والوقت</h6><p class="mb-0 text-muted">${formatDate(ev.date)} • ${ev.time}</p></div></div>`;
+                if(cols[1]) cols[1].innerHTML = `<div class="d-flex align-items-start"><i class="fas fa-map-marker-alt text-primary fs-4 me-3 mt-1"></i><div><h6 class="fw-bold mb-1">الموقع</h6><p class="mb-0 text-muted">${ev.cityName}</p></div></div>`;
+                if(cols[2]) cols[2].innerHTML = `<div class="d-flex align-items-start"><i class="fas fa-users text-primary fs-4 me-3 mt-1"></i><div><h6 class="fw-bold mb-1">المشاركون</h6><p class="mb-0 text-muted">${ev.attendees} مشارك • ${ev.status === 'available' ? 'متاح' : (ev.status === 'limited' ? 'مقاعد محدودة' : 'مكتمل')}</p></div></div>`;
+            }
+
+            // Populate Program
+            const programList = document.getElementById('programList');
+            if(programList){
+                const program = Array.isArray(ev.program) && ev.program.length ? ev.program : [
+                    { time: ev.time || '', title: ev.title, description: ev.description }
+                ];
+                programList.innerHTML = program.map(item => `
+                    <div class="col-12">
+                        <div class="d-flex align-items-start bg-opacity-10 rounded-3 p-3" style="background: var(--card-bg);">
+                            <div class="badge bg-secondary rounded-pill fs-6 me-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">${item.time || ''}</div>
+                            <div>
+                                <h5 class="fw-bold mb-2">${item.title}</h5>
+                                <p class="mb-0 text-muted">${item.description || ''}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Populate Organizer
+            const orgLogo = document.getElementById('organizerLogo');
+            const orgName = document.getElementById('organizerName');
+            const orgRole = document.getElementById('organizerRole');
+            const orgDesc = document.getElementById('organizerDescription');
+            const orgRating = document.getElementById('organizerRating');
+            const orgFollowers = document.getElementById('organizerFollowers');
+            if(ev.organizer){
+                if(orgLogo) orgLogo.src = ev.organizer.logo || orgLogo.src;
+                if(orgName) orgName.textContent = ev.organizer.name || orgName.textContent;
+                if(orgRole) orgRole.textContent = ev.organizer.role || orgRole.textContent;
+                if(orgDesc) orgDesc.textContent = ev.organizer.description || orgDesc.textContent;
+                if(orgRating) orgRating.textContent = ev.organizer.rating ? `${ev.organizer.rating} تقييم` : orgRating.textContent;
+                if(orgFollowers) orgFollowers.textContent = ev.organizer.followers ? `${ev.organizer.followers} مشارك سابق` : orgFollowers.textContent;
+            }
+
+            // Populate Stats
+            const statsGrid = document.getElementById('statsGrid');
+            if(statsGrid){
+                const stats = ev.stats || {};
+                const views = stats.views || 0;
+                const attendees = ev.attendees || 0;
+                const interested = stats.interested || 0;
+                const shares = stats.shares || 0;
+                statsGrid.innerHTML = `
+                    <div class="col-6">
+                        <div class="border rounded-3 p-3">
+                            <div class="h4 fw-bold text-primary mb-1">${views.toLocaleString('ar-EG')}</div>
+                            <small class="text-muted">مشاهدة</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="border rounded-3 p-3">
+                            <div class="h4 fw-bold text-success mb-1">${attendees.toLocaleString('ar-EG')}</div>
+                            <small class="text-muted">مشارك</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="border rounded-3 p-3">
+                            <div class="h4 fw-bold text-warning mb-1">${interested.toLocaleString('ar-EG')}</div>
+                            <small class="text-muted">مهتم</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="border rounded-3 p-3">
+                            <div class="h4 fw-bold text-info mb-1">${shares.toLocaleString('ar-EG')}</div>
+                            <small class="text-muted">مشاركة</small>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Populate Description
+            const descEl = document.getElementById('eventDescription');
+            if(descEl){
+                descEl.innerHTML = ev.description ? `<p>${ev.description}</p>` : '<p class="text-muted">لا يوجد وصف متاح لهذه الفعالية.</p>';
+            }
+
+            // Ensure ImageGallery picks up the newly created thumbs when it initializes on DOMContentLoaded
+            // No further action needed; existing ImageGallery will attach click handlers.
+        })();
+    </script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Theme and language toggles removed — site uses single language (Arabic) and no theme switching.
+
+        // Scroll to Top Button
+        class ScrollTopButton {
+            constructor() {
+                this.scrollTopBtn = document.getElementById('scrollTopBtn');
+                this.init();
+            }
+
+            init() {
+                window.addEventListener('scroll', () => this.toggleButton());
+                this.scrollTopBtn.addEventListener('click', () => this.scrollToTop());
+            }
+
+            toggleButton() {
+                if (window.pageYOffset > 300) {
+                    this.scrollTopBtn.classList.add('show');
+                } else {
+                    this.scrollTopBtn.classList.remove('show');
+                }
+            }
+
+            scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Image Gallery
+        class ImageGallery {
+            constructor() {
+                this.mainImage = document.getElementById('mainEventImage');
+                this.thumbs = document.querySelectorAll('.gallery-thumb');
+                this.init();
+            }
+
+            init() {
+                this.thumbs.forEach((thumb, index) => {
+                    thumb.addEventListener('click', () => this.changeImage(thumb, index));
+                });
+            }
+
+            changeImage(thumb, index) {
+                const newImageSrc = thumb.dataset.image;
+                this.mainImage.src = newImageSrc;
+                
+                // Update active state
+                this.thumbs.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            }
+        }
+
+        // Event Handlers
+        class EventHandlers {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                // Book Event
+                const bookEventBtn = document.getElementById('bookEventBtn');
+                bookEventBtn?.addEventListener('click', this.handleBookEvent);
+
+                // Add to Calendar
+                const addToCalendarBtn = document.getElementById('addToCalendarBtn');
+                addToCalendarBtn?.addEventListener('click', this.handleAddToCalendar);
+
+                // Share Event
+                const shareBtn = document.getElementById('shareBtn');
+                shareBtn?.addEventListener('click', this.handleShare);
+
+                // Bookmark Event
+                const bookmarkBtn = document.getElementById('bookmarkBtn');
+                bookmarkBtn?.addEventListener('click', this.handleBookmark);
+            }
+
+            handleBookEvent() {
+                // Show booking modal or redirect to booking page
+                alert('سيتم توجيهك إلى صفحة الحجز...');
+            }
+
+            handleAddToCalendar() {
+                const eventDetails = {
+                    title: 'مهرجان دمشق الثقافي',
+                    start: '20251025T180000',
+                    end: '20251025T220000',
+                    description: 'احتفال بالتراث السوري الأصيل',
+                    location: 'ساحة دمشق القديمة، دمشق'
+                };
+                
+                const calendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&dates=${eventDetails.start}/${eventDetails.end}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}`;
+                window.open(calendarUrl, '_blank');
+            }
+
+            handleShare() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'مهرجان دمشق الثقافي',
+                        text: 'انضم إلينا في مهرجان دمشق الثقافي',
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback: Copy to clipboard
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        alert('تم نسخ رابط الفعالية!');
+                    });
+                }
+            }
+
+            handleBookmark() {
+                const bookmarkIcon = document.querySelector('#bookmarkBtn i');
+                if (bookmarkIcon.classList.contains('far')) {
+                    bookmarkIcon.classList.replace('far', 'fas');
+                    alert('تم حفظ الفعالية في المفضلة!');
+                } else {
+                    bookmarkIcon.classList.replace('fas', 'far');
+                    alert('تم إزالة الفعالية من المفضلة!');
+                }
+            }
+        }
+
+        // Loading Manager
+        class LoadingManager {
+            constructor() {
+                this.loadingSpinner = document.querySelector('.loading-spinner');
+                this.init();
+            }
+
+            init() {
+                // Show loading initially
+                this.show();
+
+                // Hide loading when page is fully loaded
+                window.addEventListener('load', () => {
+                    setTimeout(() => this.hide(), 500);
+                });
+
+                // Hide loading after maximum time
+                setTimeout(() => this.hide(), 3000);
+            }
+
+            show() {
+                if (this.loadingSpinner) {
+                    this.loadingSpinner.style.display = 'block';
+                }
+            }
+
+            hide() {
+                if (this.loadingSpinner) {
+                    this.loadingSpinner.style.display = 'none';
+                }
+            }
+        }
+
+        // Initialize all components when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize managers
+            new LoadingManager();
+            new ScrollTopButton();
+            new ImageGallery();
+            new EventHandlers();
+
+            // Add fade-in animation to main content
+            document.body.classList.add('fade-in');
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Lazy loading for images
+            const images = document.querySelectorAll('img');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src || img.dataset.src;
+                        img.classList.remove('loading');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+
+        // Gallery thumb active styling
+        document.addEventListener('DOMContentLoaded', function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                .gallery-thumb.active {
+                    border: 3px solid var(--primary-color) !important;
+                    transform: scale(1.05);
+                }
+                .gallery-thumb {
+                    transition: all 300ms ease;
+                    background: transparent;
+                    display:flex; align-items:center; justify-content:center; padding:6px;
+                }
+                .gallery-thumb img { max-height:70px; object-fit:cover; display:block; }
+                .gallery-thumb:hover {
+                    transform: scale(1.02);
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "city-events-directory",
+  "version": "1.0.0",
+  "description": "Syrian Cultural Events Directory - Bootstrap Version",
+  "main": "index.html",
+  "dependencies": {
+    "@dhiwise/component-tagger": "^1.0.10"
+  },
+  "scripts": {
+    "build:css": "echo 'Using Bootstrap CDN'",
+    "watch:css": "echo 'Using Bootstrap CDN'",
+    "dev": "echo 'Using Bootstrap CDN'"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {}
+}
